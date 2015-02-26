@@ -6,7 +6,7 @@ TwitchViewer is a little User Interface that connects to [Livestreamer](http://d
 
 ## Setup
 
-First install [Livestreamer](http://docs.livestreamer.io/index.html) then download the precompiled binary for your platform and execute it. Done.
+First install [Livestreamer](http://docs.livestreamer.io/index.html) and VLC (if you don't have it) then download our precompiled binary for your platform and execute it. Done.
 
 ## License
 
