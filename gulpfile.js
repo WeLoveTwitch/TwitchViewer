@@ -11,7 +11,7 @@ var config = {
     production: false,
     assets: './assets',
     bowerDir: './bower_components',
-    frontend: './frontend'
+    frontend: './app'
 };
 
 var includes = {
@@ -26,7 +26,7 @@ var includes = {
         config.bowerDir + '/fontawesome/fonts'
     ],
     cssLibs: [
-        config.bowerDir + '/colpick/css/colpick.css'
+
     ],
     jsLibs: [
         config.bowerDir + '/jquery/dist/jquery.js',
@@ -48,7 +48,7 @@ gulp.task('default', function (done) {
 });
 
 gulp.task('clean', function () {
-    return gulp.src('./frontend/css/**/**', {read: false})
+    return gulp.src(config.frontend + '/css/**/**', {read: false})
         .pipe(rimraf());
 });
 
@@ -70,7 +70,7 @@ gulp.task('sass', function () {
             includePaths: includes.sass,
             onError: function (error) {
                 notify.onError({
-                    title: 'Twitch Overlay',
+                    title: 'Twitch Viewer',
                     message: 'SASS Compilation Failed',
                     sound: true
                 })(error);

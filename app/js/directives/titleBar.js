@@ -1,7 +1,7 @@
-TwitchOverlay.directive('titleBar', ['TwitchOverlayServer', function(TwitchOverlayServer) {
+TwitchViewer.directive('titleBar', [function() {
     return {
         restrict: 'E',
-        templateUrl: 'frontend/templates/directives/header.html',
+        templateUrl: 'app/templates/directives/header.html',
         link: function($scope, element) {
             var gui = require('nw.gui');
             var win = gui.Window.get();
