@@ -1,0 +1,16 @@
+{
+  "name": "livestreamer-ui",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Julian Hollmann <hollmann@uxebu.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
