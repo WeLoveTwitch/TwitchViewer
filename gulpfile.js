@@ -6,6 +6,7 @@ var inject = require('gulp-inject');
 var runSequence = require('gulp-run-sequence');
 var rimraf = require('gulp-rimraf');
 var notify = require('gulp-notify');
+var NwBuilder = require('node-webkit-builder');
 
 var config = {
     production: false,
@@ -104,4 +105,17 @@ gulp.task('inject', function () {
 gulp.task('watch', function () {
     gulp.start(['sass', 'fonts']);
     gulp.watch(includes.sass, ['sass', 'fonts']);
+});
+
+
+var nwOverlayFrontend = new NwBuilder({
+  files: ['./**/**', '!./build/**/**', '!./cache/**/**', '!./node_modules/**/**'],
+  buildDir: './build',
+  platforms: ['osx32', 'osx64', 'win32', 'win64'],
+  appName: 'TwitchViewer'
+});
+
+
+gulp.task('build', function () {
+  return nwOverlayFrontend.build()
 });

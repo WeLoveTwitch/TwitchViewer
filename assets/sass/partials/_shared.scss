@@ -1,102 +1,192 @@
 html, body {
-    font-family: $font-family-sans-serif;
-    height: 100%;
+  font-family: $font-family-sans-serif;
+  height: 100%;
 }
 
 body {
-    background-image: url('../../assets/images/twitch-background.png');
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    overflow: hidden;
+  background-image: url('../../assets/images/twitch-background.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  overflow: hidden;
+
+  a {
+    color: $lavender-dark;
+
+    &:hover, &:focus {
+      color: $lavender-light;
+      outline: none;
+      text-decoration: none;
+    }
+  }
 }
 
 .text-thin {
-    font-weight: 300;
+  font-weight: 300;
 }
 
-.content-container {
-    position: absolute;
-    left: 0;
-    width: 100%;
-
-    .view-header {
-        height: 50px;
-        border-bottom: 4px solid $twitch-dark;
-        background: $twitch-light;
-        box-shadow: 0 0 6px $black;
-        h1 {
-            position: absolute;
-            left: 44px;
-            color: #FFF;
-            top: 11px;
-            margin: 0;
-            font-size: 20px;
-        }
-    }
-
-    .main-content {
-        position: absolute;
-        right: 300px;
-        left: 0;
-        padding: 20px;
-    }
+.container {
+  width: auto;
+  position: absolute;
+  left: 10px;
+  top: 60px;
+  right: 10px;
+  bottom: 10px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .header {
+  height: 50px;
+  padding: 5px;
+  background: #222222;
+  color: #ffffff;
+  position: relative;
+  -webkit-app-region: drag;
+  .navigation {
+    position: absolute;
+    left: 0;
     height: 50px;
-    padding: 5px;
-    background: #222222;
-    color: #ffffff;
-    position: relative;
-    -webkit-app-region: drag;
-    .navigation {
-        position: absolute;
-        left: 0;
-        height: 50px;
-        width: 200px;
-        text-align: left;
-        font-size: 18px;
-        padding-top: 2px;
-        padding-left: 5px;
-    }
-    .logo {
-        position: absolute;
-        font-size: 18px;
-        left: 50%;
-        width: 200px;
-        margin-left: -100px;
-        height: 50px;
-        text-align: center;
-        padding-top: 7px;
-    }
-    .window-actions {
-        position: absolute;
-        padding-top: 2px;
-        right: 0;
-        width: 200px;
-        height: 50px;
-        text-align: right;
-    }
+    width: 200px;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 2px;
+    padding-left: 5px;
+  }
+  .logo {
+    position: absolute;
+    font-size: 18px;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    height: 50px;
+    text-align: center;
+    padding-top: 7px;
+  }
+  .window-actions {
+    position: absolute;
+    padding-top: 2px;
+    right: 0;
+    width: 200px;
+    height: 50px;
+    text-align: right;
+  }
 }
 
 .header .btn,
 .header .btn:hover,
 .header .btn:focus {
-    background: #222;
-    outline: none;
-    border: none;
-    -webkit-app-region: no-drag;
+  background: #222;
+  outline: none;
+  border: none;
+  -webkit-app-region: no-drag;
 }
 
 .header .btn:hover {
-    color: #999;
+  color: #999;
+}
+
+$loadingPlayerWidth: 300;
+$loadingPlayerHeight: 60;
+
+.channels {
+  .channel {
+    color: $white;
+    padding: 10px;
+    background-color: #444444;
+    margin-top: 20px;
+
+    p {
+      padding: 0;
+      margin: 0;
+
+      &.subline {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .search-bar {
+    padding: 0;
+
+    .form-control {
+      background: #333;
+      border: 1px solid #444;
+      outline: none;
+
+      &:focus {
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #777;
+        color: #dddddd;
+      }
+    }
+  }
+
+  .total-results {
+    color: $white;
+    padding: 0;
+    padding-top: 10px;
+  }
+
+  .preview-thumbnail {
+    width: 80px;
+    height: 45px;
+    background-color: $darkgray-light;
+  }
+
+  .info {
+    padding-left: 10px;
+  }
+
+  .actions {
+    padding-top: 2px;
+
+    .btn {
+      background: none;
+      font-size: 20px;
+      &:focus, &:active, &:hover {
+        outline: none;
+        color: $white;
+      }
+
+      .fa-star {
+        color: $sunflower-light;
+      }
+    }
+  }
+
+  .player-loading {
+    z-index: 1000;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    background: $twitch-dark;
+    color: $white;
+    padding: 20px;
+    width: #{$loadingPlayerWidth} + "px";
+    height: #{$loadingPlayerHeight} + "px";
+    margin-left: -#{$loadingPlayerWidth / 2} + "px";
+    margin-top: -#{$loadingPlayerHeight / 2} + "px";
+  }
+
+  .backdrop {
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($darkgray-dark, 0.8);
+  }
+
 }

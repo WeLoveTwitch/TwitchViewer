@@ -19,7 +19,6 @@ TwitchViewer.directive('titleBar', [function() {
             };
 
             $scope.reload = function() {
-                TwitchOverlayServer.stop();
                 win.reloadIgnoringCache();
             };
 

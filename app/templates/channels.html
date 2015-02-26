@@ -1,0 +1,44 @@
+<div class="row channels" ng-controller="ChannelController">
+    <div class="col-md-12 col-lg-12 search-bar">
+        <form ng-submit="search(searchTerm)">
+            <input type="text" class="form-control" placeholder="Search twitch for users and games.." ng-model="searchTerm">
+            <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+        </form>
+    </div>
+    <div class="total-results col-md-12 col-lg-12">
+        <span ng-if="totalSearchResults > 0">
+            Total results: {{totalSearchResults}} <a href="" ng-click="clearResults()">clear results</a>
+        </span>
+        <span ng-if="totalSearchResults === 0 && channels.length === 0">
+            Nothing valuable found.. <a href="" ng-click="clearResults()">go north</a>
+        </span>
+    </div>
+    <div class="channel col-md-12 col-lg-12" ng-repeat="channel in channels track by $index">
+        <div class="preview-thumbnail pull-left">
+            <img src="{{channel.preview.small}}">
+        </div>
+        <div class="info pull-left">
+            <p class="headline">
+                <strong>{{channel.channel.display_name}}</strong>
+                <span class="text-muted">is playing <a href="" ng-click="search(channel.game)">{{channel.game}}</a></span>
+            </p>
+            <p class="subline">
+                <i class="fa fa-users"></i> {{channel.viewers}}
+                <i class="fa fa-heart"></i> {{channel.channel.followers}}
+                <i class="fa fa-eye"></i> {{channel.channel.views}}
+            </p>
+        </div>
+        <div class="actions pull-right">
+            <button class="btn" ng-click="watch(channel.channel.name)">
+                <i class="fa fa-play"></i>
+            </button>
+            <button class="btn" ng-click="star(channel.channel.name)">
+                <i class="fa" ng-class="{'fa-star': isStarred(channel.channel.name), 'fa-star-o': !isStarred(channel.channel.name)}"></i>
+            </button>
+        </div>
+    </div>
+    <div class="backdrop" ng-if="loading"></div>
+    <div class="player-loading" ng-if="loading">
+        <i class="fa fa-circle-o-notch fa-spin"></i> Loading {{loading}}..
+    </div>
+</div>

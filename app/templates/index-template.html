@@ -8,9 +8,7 @@
         <!-- endinject -->
 	</head>
 	<body ng-app="TwitchViewer">
-    <title-bar></title-bar>
-		<div class="sidebar">
-            <div id="add-user"></div>
-        </div>
+        <title-bar></title-bar>
+		<div class="container" ng-include="'app/templates/channels.html'"></div>
 	</body>
 </html>
